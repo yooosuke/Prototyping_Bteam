@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <title>ももちゃんの執事</title>
+        <style type="text/css">
+            .todo-list {
+                height: 55px;
+                line-height: 2.5em;
+            }
+        </style>
+        <script>
+            var app = angular.module('todoApp', []);
+            app.controller('todoCtrl', function($scope) {
+                var ctrl = this;
+                ctrl.todoList = [];
+                ctrl.todoText = '';
+                ctrl.searchTodoText = {};
+
+                //Add todo
+                ctrl.addTodo = function(txt) {
+                    ctrl.todoList.push({date: new Date(), value: txt});
+                    ctrl.todoText = '';
+                };
+
+                //Remove todo
+                ctrl.removeTodo = function(idx) {
+                    ctrl.todoList.splice(idx, 1);
+                };
+            });
+        </script>
+    </head>
+    <body>
+        <div ng-app="todoApp">
+            <div ng-controller="todoCtrl as ctrl">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">Todo List</div>
+                    <div class="panel-body">
+                        <form class="form-inline" name="addNewTodoForm" novalidate>
+                            <label>New Todo</label>
+                            <div class="form-group">
+                                <input type="text" class="form-control" ng-model="ctrl.todoText" ng-required="true"/>
+                            </div>
+                            <button type="submit" class="btn btn-success" ng-click="ctrl.addTodo(ctrl.todoText);" ng-disabled="addNewTodoForm.$invalid">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </form>
+                    </div>
+                    <div class="panel-body">
+                        <div class="search-todo">
+                            <form>
+                                <div class="form-group">
+                                    <label>Search Todo</label>
+                                    <input type="text" class="form-control" ng-model="searchTodoText.value"/>
+                                </div>
+                            </form>
+                        </div>
+                        <ul class="list-group">
+                            <li class="list-group-item todo-list" ng-repeat="todo in ctrl.todoList | filter: searchTodoText">
+                                {{todo.date | date: 'yyyy-MM-dd HH:mm:ss': '+0900'}} {{todo.value}}
+                                <button type="button" class="btn btn-danger pull-right" ng-click="ctrl.removeTodo($index);">
+                                    <span class="glyphicon glyphicon-minus"></span>
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
