@@ -3,15 +3,20 @@
     <head>
         <meta charset="UTF-8">
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
         <title>ももちゃんの執事</title>
         <style type="text/css">
+            .panel-style{
+                margin: 10px;
+            }         
             .todo-list {
                 height: 55px;
                 line-height: 2.5em;
-            }
+            }  
         </style>
-        <script>
+       <!-- <script>
             var app = angular.module('momoApp', []);
             app.controller('todoCtrl', function($scope) {
                 var ctrl = this;
@@ -30,99 +35,62 @@
                     ctrl.todoList.splice(idx, 1);
                 };
             });
-        </script>
+        </script> -->
     </head>
-    <body>
+    <body background="./img/NoiseBlur07_2000.jpg">
         <div ng-app="momoApp">
             <div ng-controller="todoCtrl as ctrl">
- <!--               <nav class="navbar navbar-default">
-                    <div class="container-fluid">
-                        <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
+                          
+                <nav class="navbar navbar-default">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#gnavi">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#">Brand</a>
-                        </div>
+                        <a href="/Prototyping_Bteam/index.html" class="navbar-brand">ももちゃんの執事</a>
+                    </div>
 
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+                    <div id="gnavi" class="collapse navbar-collapse">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-                            <li><a href="#">Link</a></li>
-                            <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">One more separated link</a></li>
-                            </ul>
-                            </li>
+                            <li><a href="/Prototyping_Bteam/index.html"><span class="glyphicon glyphicon-bell" aria-hidden="true"></span>  残量おしらせ</a></li>
+                            <li><a href=""><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>  クーポン</a></li>
+                            <li><a href=""><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>  設定</a></li>
                         </ul>
-                        <form class="navbar-form navbar-left" role="search">
-                            <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search">
-                            </div>
-                            <button type="submit" class="btn btn-default">Submit</button>
-                        </form>
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a href="#">Link</a></li>
-                        </ul>
-                        </div>
                     </div>
-                </nav>          
--->                
+                </nav>
 
-                <div class="panel panel-primary">
-                    <div class="panel-heading">ももちゃんの執事</div>
-                    <div class="panel-body">
+                <div class="panel panel-primary panel-style" >
+                    <div class="panel-heading">
                         <form class="form-inline" name="MenuTitle" novalidate>
-                            <label>◆ MENU ◆</label>
+                            <label><h4><span class="glyphicon glyphicon-bell" aria-hidden="true"></span> 残量おしらせ</h4></label>
                         </form>
                     </div>
-                    <div class="panel-body">
-                        <form class="form-inline" name="MenuBtn" novalidate>
-                            <a href="meter.html" class="box btn btn-primary btn-lg">残量おしらせ</a><br />
-                            <a href="#" class="box btn btn-primary btn-lg">クーポン</a><br />
-                            <a href="#" class="box btn btn-primary btn-lg">設定</a><br />
-                        </form>
-                    </div>
-                    <!--<div class="panel-body">
-                        <form class="form-inline" name="addNewTodoForm" novalidate>
-                            <label>New Todo</label>
-                            <div class="form-group">
-                                <input type="text" class="form-control" ng-model="ctrl.todoText" ng-required="true"/>
+
+                    <div class="panel-body">    
+                        <div class="col-lg-4">
+                            <div class="bs-component">
+                            <div class="alert alert-dismissible alert-danger">
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                <strong><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>残量が少なくなっています</strong><br>
+                                 <a href="https://www.amazon.co.jp/%E3%83%90%E3%82%A6%E3%83%B3%E3%82%B7%E3%82%A2-44571-%E3%83%9C%E3%83%87%E3%82%A3%E3%82%BD%E3%83%BC%E3%83%97-%E3%83%9D%E3%83%B3%E3%83%97%E4%BB%98-550mL/dp/B004P5Oh4C/ref=pd_sim_121_7?ie=UTF8&psc=1&refRID=NDNMHN9VBE0DDHQ4YX7J" target="_blank" class="alert-link">ボディソープ</a>が残り20％です
                             </div>
-                            <button type="submit" class="btn btn-success" ng-click="ctrl.addTodo(ctrl.todoText);" ng-disabled="addNewTodoForm.$invalid">
-                                <span class="glyphicon glyphicon-plus"></span>
-                            </button>
-                        </form>
-                    </div>
-                    <div class="panel-body">
-                        <div class="search-todo">
-                            <form>
-                                <div class="form-group">
-                                    <label>Search Todo</label>
-                                    <input type="text" class="form-control" ng-model="searchTodoText.value"/>
-                                </div>
-                            </form>
                         </div>
-                        <ul class="list-group">
-                            <li class="list-group-item todo-list" ng-repeat="todo in ctrl.todoList | filter: searchTodoText">
-                                {{todo.date | date: 'yyyy-MM-dd HH:mm:ss': '+0900'}} {{todo.value}}
-                                <button type="button" class="btn btn-danger pull-right" ng-click="ctrl.removeTodo($index);">
-                                    <span class="glyphicon glyphicon-minus"></span>
-                                </button>
-                            </li>
-                        </ul>
-                    </div>-->
+                        <a href="https://www.amazon.co.jp/%E3%83%9C%E3%82%BF%E3%83%8B%E3%82%B9%E3%83%88-BOTANIST-%E3%83%9C%E3%82%BF%E3%83%8B%E3%82%AB%E3%83%AB%E3%82%B7%E3%83%A3%E3%83%B3%E3%83%97%E3%83%BC-%E3%82%B9%E3%83%A0%E3%83%BC%E3%82%B9-%EF%BC%88%E8%A9%B0%E3%82%81%E6%9B%BF%E3%81%88%E3%83%91%E3%82%A6%E3%83%81%EF%BC%89-440ml/dp/B016LQGH1M/ref=pd_sim_121_3?ie=UTF8&psc=1&refRID=NDNMHN9VBE0DDHQ4YX7J" target="_blank">シャンプー</a>
+                        <div class="progress progress-striped">
+                            <div class="progress-bar progress-bar-warning" style="width: 60%"></div>
+                        </div>
+                        <a href="https://www.amazon.co.jp/BOTANIST-%E3%83%9C%E3%82%BF%E3%83%8B%E3%82%AB%E3%83%AB%E3%83%88%E3%83%AA%E3%83%BC%E3%83%88%E3%83%A1%E3%83%B3%E3%83%88-%E3%82%B9%E3%83%A0%E3%83%BC%E3%82%B9-%EF%BC%88%E8%A9%B0%E3%82%81%E6%9B%BF%E3%81%88%E3%83%91%E3%82%A6%E3%83%81%EF%BC%89-440g/dp/B016XRKVS4/ref=pd_bxgy_121_img_2?ie=UTF8&psc=1&refRID=PMQE6FX0H1Z4290KSPQZ" target="_blank">トリートメント</a>
+                        <div class="progress progress-striped">
+                            <div class="progress-bar progress-bar-info" style="width: 75%"></div>
+                        </div>                        
+                        <a href="https://www.amazon.co.jp/%E3%83%90%E3%82%A6%E3%83%B3%E3%82%B7%E3%82%A2-44571-%E3%83%9C%E3%83%87%E3%82%A3%E3%82%BD%E3%83%BC%E3%83%97-%E3%83%9D%E3%83%B3%E3%83%97%E4%BB%98-550mL/dp/B004P5Oh4C/ref=pd_sim_121_7?ie=UTF8&psc=1&refRID=NDNMHN9VBE0DDHQ4YX7J" target="_blank">ボディソープ</a>
+                        <div class="progress progress-striped">
+                            <div class="progress-bar progress-bar-danger" style="width: 20%"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+	    </div>
     </body>
 </html>

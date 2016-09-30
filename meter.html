@@ -3,6 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
         <title>ももちゃんの執事</title>
         <style type="text/css">
@@ -33,11 +35,29 @@
         </script>
     </head>
     <body>
+        
         <div ng-app="momoApp">
             <div ng-controller="todoCtrl as ctrl">
-
                 <div class="panel panel-primary">
-                    <div class="panel-heading">ももちゃんの執事</div>
+                          
+    <nav class="navbar navbar-default">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#gnavi">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+  	<a href="/" class="navbar-brand">ももちゃんの執事</a>
+  </div>
+ 
+  <div id="gnavi" class="collapse navbar-collapse">
+    <ul class="nav navbar-nav">
+      <li><a href="">残量おしらせ</a></li>
+      <li><a href="">クーポン</a></li>
+      <li><a href="">設定</a></li>
+    </ul>
+  </div>
+</nav>
                     <div class="panel-body">
                         <form class="form-inline" name="MenuTitle" novalidate>
                             <label>◆ 残量おしらせ ◆</label>
@@ -56,6 +76,6 @@
                     </div>
                 </div>
             </div>
-        </div>
+	</div>
     </body>
 </html>
